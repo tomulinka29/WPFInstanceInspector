@@ -27,11 +27,12 @@ namespace WpfInstanceInspector
             ExampleClass1 exampleClass1 = new ExampleClass1(){ Age = 15, Name = "Petr"};
             PropertyInfo[] propertyInfo = exampleClass1.GetType().GetProperties();
 
-            grid_mainGrid.Children.Add(new PropertyControl(exampleClass1, propertyInfo[0]));
-            foreach (var pi in propertyInfo)
+            //grid_mainGrid.Children.Add(new PropertyControl(exampleClass1, propertyInfo[0]));
+            grid_mainGrid.Children.Add(new InstanceInspectorControl(exampleClass1));
+            /*foreach (var pi in propertyInfo)
             {
                 MessageBox.Show(pi.ToString() + "\nType: " + pi.PropertyType.Name);
-            }
+            }*/
 
         }
     }

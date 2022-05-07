@@ -22,25 +22,27 @@ namespace WpfInstanceInspector
     /// </summary>
     public partial class PropertyControl : UserControl
     {
-        private readonly  object instance;
-        private readonly  PropertyInfo propertyInfo;
-
+        private object instance;
+        private PropertyInfo propertyInfo;
+        
+        //public string PropertyName => this.propertyInfo.Name; 
         public string PropertyName => this.propertyInfo.Name;
 
         public object PropertyValue
         {
-            get => this.propertyInfo.GetValue(instance);
-            set => this.propertyInfo.SetValue(instance, value);
+            get { return propertyInfo.GetValue(instance); }
+            set { propertyInfo.SetValue(instance, value); }
         }
 
         public PropertyControl(object instance, PropertyInfo propertyInfo)
         {
-            InitializeComponent();
-
             this.instance = instance;
             this.propertyInfo = propertyInfo;
-            lBox.Items.Add(PropertyValue);
-            
+
+            InitializeComponent();
+
+
+            //.Items.Add(PropertyName);
         }
     }
 

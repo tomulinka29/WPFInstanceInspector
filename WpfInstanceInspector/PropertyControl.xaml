@@ -9,15 +9,29 @@
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="UserControl"
 >
-    <UserControl.Resources>
-        <local:DoubleToInt32Converter x:Key="DoubleToInt32Converter" />
 
-        <DataTemplate DataType="{x:Type system:Int32}">
-            <StackPanel Orientation="Horizontal" DataContext="{Binding ElementName=UserControl}">
-                <Label Content="{Binding PropertyName, Mode=OneWay }"></Label>
-                <Slider Width="150"  Value="{Binding PropertyValue, Mode=TwoWay, Converter={StaticResource DoubleToInt32Converter }}" SmallChange="1"></Slider>
-            </StackPanel>
+<UserControl.Resources>
+
+    <!--#region DataTemplates -->
+        <DataTemplate x:Key="IntegerTemplate">
+            <Button Content="{Binding ElementName=UserControl, Path=PropertyName}"/>
         </DataTemplate>
-    </UserControl.Resources>
-    <ListBox x:Name="lBox"></ListBox>
+
+        <DataTemplate x:Key="StringTemplate">
+            <Label Content="{Binding ElementName=UserControl, Path=PropertyName}"/>
+        </DataTemplate>
+        <!--#endregion-->
+
+        <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
+                                               IntegerTemplate="{StaticResource IntegerTemplate}" 
+                                               StringTemplate="{StaticResource StringTemplate}"  />
+</UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" DataContext="{Binding ElementName=UserControl}">
+        <Label Content="{Binding PropertyName}" />
+            <ContentPresenter x:Name="contentPresenter" Content="{Binding PropertyValue}" VerticalAlignment="Center" ContentTemplateSelector="{StaticResource ControlTemplateSelector}">
+               
+            </ContentPresenter>
+    </StackPanel>
+
 </UserControl>
