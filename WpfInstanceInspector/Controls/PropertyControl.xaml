@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfInstanceInspector"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="UserControl"
@@ -23,12 +24,18 @@
     <DataTemplate x:Key="BoolTemplate">
         <CheckBox IsChecked="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></CheckBox>
     </DataTemplate>
+    
+    <DataTemplate x:Key="ColorTemplate">
+            <xctk:ColorPicker  SelectedColor="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></xctk:ColorPicker>    
+    </DataTemplate>
     <!--#endregion-->
 
     <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
                                            IntegerTemplate="{ StaticResource IntegerTemplate}" 
                                            StringTemplate="{StaticResource StringTemplate}"
-                                           BoolTemplate="{StaticResource BoolTemplate}" />
+                                           BoolTemplate="{StaticResource BoolTemplate}"
+                                           ColorTemplate="{StaticResource ColorTemplate}"
+                                           />
     </UserControl.Resources>
 
     <Grid DataContext="{Binding ElementName=UserControl}">
@@ -37,10 +44,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="lbl" Content="{Binding PropertyName}" HorizontalAlignment="Left" Grid.Column="0" Margin="10 0 0 0"/>
+            <Label x:Name="lbl" Content="{Binding PropertyName}" HorizontalAlignment="Left" Grid.Column="0"/>
             <ContentPresenter x:Name="contentPresenter" 
                               Content="{Binding PropertyValue}" 
-                              Margin="20 0 10 0"
+                              Margin="20 0 0 0"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Right"
                               ContentTemplateSelector="{StaticResource ControlTemplateSelector}"  

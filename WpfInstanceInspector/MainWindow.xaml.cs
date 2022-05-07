@@ -39,7 +39,7 @@ namespace WpfInstanceInspector
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show( exampleClass1.Name + "\n" + exampleClass1.Age.ToString() + "\n" + exampleClass1.Depressed.ToString());
+            MessageBox.Show( exampleClass1.Name + "\n" + exampleClass1.Age.ToString() + "\n" + exampleClass1.Depressed.ToString() + "\n" + exampleClass1.SkinColor.ToString());
         }
     }
 }

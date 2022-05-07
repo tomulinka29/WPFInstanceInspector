@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace WpfInstanceInspector
 {
@@ -13,5 +14,7 @@ namespace WpfInstanceInspector
         public string Name { get; set; }
 
         public bool Depressed { get; set; }
+
+        public Color SkinColor { get; set; }
     }
 }

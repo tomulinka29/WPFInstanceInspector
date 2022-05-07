@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WpfInstanceInspector
 {
@@ -13,6 +14,7 @@ namespace WpfInstanceInspector
         public DataTemplate IntegerTemplate { get; set; }
         public DataTemplate StringTemplate  { get; set; }
         public DataTemplate BoolTemplate { get; set; }
+        public DataTemplate ColorTemplate { get; set; }
 
 
         //Selects data template based on the data type
@@ -28,6 +30,9 @@ namespace WpfInstanceInspector
 
             if (item is bool)
                 return BoolTemplate;
+
+            if (item is Color)
+                return ColorTemplate;
 
             return base.SelectTemplate(item, container);
         }
