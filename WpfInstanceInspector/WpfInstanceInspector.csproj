@@ -55,14 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="InstanceInspectorControl.xaml.cs">
+    <Compile Include="Controls\InstanceInspectorControl.xaml.cs">
       <DependentUpon>InstanceInspectorControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PropertyControl.xaml.cs">
+    <Compile Include="Controls\PropertyControl.xaml.cs">
       <DependentUpon>PropertyControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PropertyControlTemplateSelector.cs" />
-    <Page Include="InstanceInspectorControl.xaml">
+    <Compile Include="Classes\PropertyControlTemplateSelector.cs" />
+    <Page Include="Controls\InstanceInspectorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,12 +74,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ExampleClass1.cs" />
+    <Compile Include="Classes\ExampleClass1.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PropertyControl.xaml">
+    <Page Include="Controls\PropertyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,5 +110,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
