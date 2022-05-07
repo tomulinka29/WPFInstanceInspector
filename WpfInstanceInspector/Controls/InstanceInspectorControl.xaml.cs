@@ -29,9 +29,8 @@ namespace WpfInstanceInspector
 
             PropertyInfo[] propertyInfos = instance.GetType().GetProperties();
             foreach (var propertyInfo in propertyInfos)
-            {
                 sp_PropsPanel.Children.Add(new PropertyControl(instance, propertyInfo));
-            }
+            
         }
     }
 }

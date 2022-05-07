@@ -11,34 +11,41 @@
 >
 
 <UserControl.Resources>
+    <!--#region DataTemplates -->
+    <DataTemplate x:Key="IntegerTemplate">
+        <Button Content="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
+    </DataTemplate>
 
-        <!--#region DataTemplates -->
-        <DataTemplate x:Key="IntegerTemplate">
-            <Button Content="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
-        </DataTemplate>
+    <DataTemplate x:Key="StringTemplate">
+        <TextBox Text="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
+    </DataTemplate>
 
-        <DataTemplate x:Key="StringTemplate">
-            <TextBox Text="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
-        </DataTemplate>
+    <DataTemplate x:Key="BoolTemplate">
+        <CheckBox IsChecked="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></CheckBox>
+    </DataTemplate>
+    <!--#endregion-->
 
-        <DataTemplate x:Key="BoolTemplate">
-            <CheckBox IsChecked="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></CheckBox>
-        </DataTemplate>
-        <!--#endregion-->
+    <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
+                                           IntegerTemplate="{ StaticResource IntegerTemplate}" 
+                                           StringTemplate="{StaticResource StringTemplate}"
+                                           BoolTemplate="{StaticResource BoolTemplate}" />
+    </UserControl.Resources>
 
-        <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
-                                               IntegerTemplate="{StaticResource IntegerTemplate}" 
-                                               StringTemplate="{StaticResource StringTemplate}"
-                                               BoolTemplate="{StaticResource BoolTemplate}"
-                                               />
-</UserControl.Resources>
+    <Grid DataContext="{Binding ElementName=UserControl}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-    <StackPanel Orientation="Horizontal" DataContext="{Binding ElementName=UserControl}">
-        <Label Content="{Binding PropertyName}" />
-        <ContentPresenter x:Name="contentPresenter" 
-                          Content="{Binding PropertyValue}" 
-                          VerticalAlignment="Center" 
-                          ContentTemplateSelector="{StaticResource ControlTemplateSelector}" />
-    </StackPanel>
+            <Label x:Name="lbl" Content="{Binding PropertyName}" HorizontalAlignment="Left" Grid.Column="0" Margin="10 0 0 0"/>
+            <ContentPresenter x:Name="contentPresenter" 
+                              Content="{Binding PropertyValue}" 
+                              Margin="20 0 10 0"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Right"
+                              ContentTemplateSelector="{StaticResource ControlTemplateSelector}"  
+                              Grid.Column="1"
+                              />
+        </Grid>
 
 </UserControl>

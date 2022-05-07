@@ -6,7 +6,13 @@
              xmlns:local="clr-namespace:WpfInstanceInspector"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            <StackPanel Orientation="Vertical" x:Name="sp_PropsPanel"></StackPanel>
-    </Grid>
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="Gray"></Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical" x:Name="sp_PropsPanel" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+
 </UserControl>
