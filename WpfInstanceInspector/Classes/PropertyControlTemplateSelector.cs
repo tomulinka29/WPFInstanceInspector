@@ -12,7 +12,10 @@ namespace WpfInstanceInspector
     {
         public DataTemplate IntegerTemplate { get; set; }
         public DataTemplate StringTemplate  { get; set; }
+        public DataTemplate BoolTemplate { get; set; }
 
+
+        //Selects data template based on the data type
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (item == null) return null;
@@ -22,6 +25,9 @@ namespace WpfInstanceInspector
             
             if (item is string)
                 return StringTemplate;
+
+            if (item is bool)
+                return BoolTemplate;
 
             return base.SelectTemplate(item, container);
         }

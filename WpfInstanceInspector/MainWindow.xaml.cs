@@ -21,10 +21,11 @@ namespace WpfInstanceInspector
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ExampleClass1 exampleClass1;
         public MainWindow()
         {
             InitializeComponent();
-            ExampleClass1 exampleClass1 = new ExampleClass1(){ Age = 15, Name = "Petr"};
+            exampleClass1 = new ExampleClass1(){ Age = 15, Name = "Petr"};
             PropertyInfo[] propertyInfo = exampleClass1.GetType().GetProperties();
 
             //grid_mainGrid.Children.Add(new PropertyControl(exampleClass1, propertyInfo[0]));
@@ -34,6 +35,11 @@ namespace WpfInstanceInspector
                 MessageBox.Show(pi.ToString() + "\nType: " + pi.PropertyType.Name);
             }*/
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show( exampleClass1.Name + "\n" + exampleClass1.Age.ToString() + "\n" + exampleClass1.Depressed.ToString());
         }
     }
 }

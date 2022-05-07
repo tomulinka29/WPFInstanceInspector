@@ -12,26 +12,33 @@
 
 <UserControl.Resources>
 
-    <!--#region DataTemplates -->
+        <!--#region DataTemplates -->
         <DataTemplate x:Key="IntegerTemplate">
-            <Button Content="{Binding ElementName=UserControl, Path=PropertyName}"/>
+            <Button Content="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="StringTemplate">
-            <Label Content="{Binding ElementName=UserControl, Path=PropertyName}"/>
+            <TextBox Text="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="BoolTemplate">
+            <CheckBox IsChecked="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></CheckBox>
         </DataTemplate>
         <!--#endregion-->
 
         <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
                                                IntegerTemplate="{StaticResource IntegerTemplate}" 
-                                               StringTemplate="{StaticResource StringTemplate}"  />
+                                               StringTemplate="{StaticResource StringTemplate}"
+                                               BoolTemplate="{StaticResource BoolTemplate}"
+                                               />
 </UserControl.Resources>
 
     <StackPanel Orientation="Horizontal" DataContext="{Binding ElementName=UserControl}">
         <Label Content="{Binding PropertyName}" />
-            <ContentPresenter x:Name="contentPresenter" Content="{Binding PropertyValue}" VerticalAlignment="Center" ContentTemplateSelector="{StaticResource ControlTemplateSelector}">
-               
-            </ContentPresenter>
+        <ContentPresenter x:Name="contentPresenter" 
+                          Content="{Binding PropertyValue}" 
+                          VerticalAlignment="Center" 
+                          ContentTemplateSelector="{StaticResource ControlTemplateSelector}" />
     </StackPanel>
 
 </UserControl>
