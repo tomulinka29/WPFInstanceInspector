@@ -15,6 +15,7 @@ namespace WpfInstanceInspector
         public DataTemplate StringTemplate  { get; set; }
         public DataTemplate BoolTemplate { get; set; }
         public DataTemplate ColorTemplate { get; set; }
+        public DataTemplate DelegateTemplate { get; set; }
 
 
         //Selects data template based on the data type
@@ -33,6 +34,9 @@ namespace WpfInstanceInspector
 
             if (item is Color)
                 return ColorTemplate;
+
+            if (item is Delegate)
+                return DelegateTemplate;
 
             return base.SelectTemplate(item, container);
         }

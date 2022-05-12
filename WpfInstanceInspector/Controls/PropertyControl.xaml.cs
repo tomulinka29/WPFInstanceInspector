@@ -40,9 +40,19 @@ namespace WpfInstanceInspector
             this.propertyInfo = propertyInfo;
 
             InitializeComponent();
+        }
 
 
-            //.Items.Add(PropertyName);
+        private void InvokeDelegate(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ((Delegate)PropertyValue).DynamicInvoke();
+            }
+            catch(TargetInvocationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 

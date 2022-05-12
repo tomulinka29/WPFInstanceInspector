@@ -28,13 +28,18 @@
     <DataTemplate x:Key="ColorTemplate">
             <xctk:ColorPicker  SelectedColor="{Binding ElementName=UserControl, Path=PropertyValue, Mode=TwoWay}"></xctk:ColorPicker>    
     </DataTemplate>
-    <!--#endregion-->
+
+    <DataTemplate x:Key="DelegateTemplate">
+            <Button Click="InvokeDelegate" Content="Manual invoke"/>
+        </DataTemplate>
+        <!--#endregion-->
 
     <local:PropertyControlTemplateSelector x:Key="ControlTemplateSelector"
                                            IntegerTemplate="{ StaticResource IntegerTemplate}" 
                                            StringTemplate="{StaticResource StringTemplate}"
                                            BoolTemplate="{StaticResource BoolTemplate}"
                                            ColorTemplate="{StaticResource ColorTemplate}"
+                                           DelegateTemplate="{StaticResource DelegateTemplate}"
                                            />
     </UserControl.Resources>
 

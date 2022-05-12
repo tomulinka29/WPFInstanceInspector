@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfInstanceInspector.Controls;
 
 namespace WpfInstanceInspector
 {
@@ -20,16 +21,14 @@ namespace WpfInstanceInspector
     /// Interaction logic for InstanceInspectorControl.xaml
     /// </summary>
     public partial class InstanceInspectorControl : UserControl
-    {
-        private readonly object instance;
-        public InstanceInspectorControl(object instance)
+    { 
+        public InstanceInspectorControl(InstanceModel instanceModel)
         {
             InitializeComponent();
-            this.instance = instance;
 
-            PropertyInfo[] propertyInfos = instance.GetType().GetProperties();
+            PropertyInfo[] propertyInfos = instanceModel.GetPropertyInfos();
             foreach (var propertyInfo in propertyInfos)
-                sp_PropsPanel.Children.Add(new PropertyControl(instance, propertyInfo));
+                sp_PropsPanel.Children.Add(new PropertyControl(instanceModel.Instance, propertyInfo));
             
         }
     }

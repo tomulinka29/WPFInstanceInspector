@@ -62,6 +62,7 @@
     <Compile Include="Controls\InstanceInspectorControl.xaml.cs">
       <DependentUpon>InstanceInspectorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\InstanceModel.cs" />
     <Compile Include="Controls\PropertyControl.xaml.cs">
       <DependentUpon>PropertyControl.xaml</DependentUpon>
     </Compile>

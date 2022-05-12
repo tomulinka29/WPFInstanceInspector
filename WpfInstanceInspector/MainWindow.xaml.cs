@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfInstanceInspector.Controls;
 
 namespace WpfInstanceInspector
 {
@@ -29,7 +30,8 @@ namespace WpfInstanceInspector
             PropertyInfo[] propertyInfo = exampleClass1.GetType().GetProperties();
 
             //grid_mainGrid.Children.Add(new PropertyControl(exampleClass1, propertyInfo[0]));
-            grid_mainGrid.Children.Add(new InstanceInspectorControl(exampleClass1));
+            InstanceModel instanceModel = new InstanceModel(exampleClass1);
+            grid_mainGrid.Children.Add(new InstanceInspectorControl(instanceModel));
             /*foreach (var pi in propertyInfo)
             {
                 MessageBox.Show(pi.ToString() + "\nType: " + pi.PropertyType.Name);
@@ -39,7 +41,7 @@ namespace WpfInstanceInspector
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show( exampleClass1.Name + "\n" + exampleClass1.Age.ToString() + "\n" + exampleClass1.Depressed.ToString() + "\n" + exampleClass1.SkinColor.ToString());
+            MessageBox.Show( exampleClass1.Name + "\n" + exampleClass1.Age.ToString() + "\n" + exampleClass1.Weird.ToString() + "\n" + exampleClass1.SkinColor.ToString());
         }
     }
 }
