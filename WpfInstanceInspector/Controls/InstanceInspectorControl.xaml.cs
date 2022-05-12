@@ -21,15 +21,39 @@ namespace WpfInstanceInspector
     /// Interaction logic for InstanceInspectorControl.xaml
     /// </summary>
     public partial class InstanceInspectorControl : UserControl
-    { 
+    {
+        //The parent of this control must be a CANVAS!!!
+
+        private Point lastMousePos;
+
         public InstanceInspectorControl(InstanceModel instanceModel)
         {
             InitializeComponent();
-
+            
             PropertyInfo[] propertyInfos = instanceModel.GetPropertyInfos();
             foreach (var propertyInfo in propertyInfos)
                 sp_PropsPanel.Children.Add(new PropertyControl(instanceModel.Instance, propertyInfo));
             
+        }
+
+        private void lbl_InspectorName_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {             
+            lastMousePos = e.GetPosition(this);
+            lbl_InspectorName.CaptureMouse();
+        }
+
+        private void lbl_InspectorName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            lbl_InspectorName.ReleaseMouseCapture();
+        }
+
+        private void lbl_InspectorName_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (lbl_InspectorName.IsMouseCaptured)
+            {
+                Canvas.SetLeft(this, e.GetPosition(Parent as Window).X - lastMousePos.X);
+                Canvas.SetTop (this, e.GetPosition(Parent as Window).Y - lastMousePos.Y);
+            }
         }
     }
 }

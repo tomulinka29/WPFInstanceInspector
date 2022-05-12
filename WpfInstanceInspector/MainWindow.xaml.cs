@@ -31,7 +31,7 @@ namespace WpfInstanceInspector
 
             //grid_mainGrid.Children.Add(new PropertyControl(exampleClass1, propertyInfo[0]));
             InstanceModel instanceModel = new InstanceModel(exampleClass1);
-            grid_mainGrid.Children.Add(new InstanceInspectorControl(instanceModel));
+            canvas_MainCanvas.Children.Add(new InstanceInspectorControl(instanceModel));
             /*foreach (var pi in propertyInfo)
             {
                 MessageBox.Show(pi.ToString() + "\nType: " + pi.PropertyType.Name);

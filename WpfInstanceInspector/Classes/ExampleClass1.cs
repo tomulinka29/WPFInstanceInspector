@@ -20,14 +20,14 @@ namespace WpfInstanceInspector
 
         public Color SkinColor { get; set; }
 
-        public OnFinished F { get; set; }
+        public OnFinished exampleDelegate { get; set; }
        
         public ExampleClass1()
         {
-            F = A;
+            exampleDelegate = ExampleDelegateMethod;
         }
 
-        public void A()
+        public void ExampleDelegateMethod()
         {
             MessageBox.Show("Clicked");
         }
