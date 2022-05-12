@@ -29,7 +29,7 @@ namespace WpfInstanceInspector
         public InstanceInspectorControl(InstanceModel instanceModel)
         {
             InitializeComponent();
-            
+            lbl_InspectorName.Content = instanceModel.Instance.GetType().Name;
             PropertyInfo[] propertyInfos = instanceModel.GetPropertyInfos();
             foreach (var propertyInfo in propertyInfos)
                 sp_PropsPanel.Children.Add(new PropertyControl(instanceModel.Instance, propertyInfo));

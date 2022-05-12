@@ -40,6 +40,12 @@ namespace WpfInstanceInspector
             this.propertyInfo = propertyInfo;
 
             InitializeComponent();
+
+            if (PropertyValue is Delegate)
+            {
+                ell_InputSocket.IsEnabled = false;
+                ell_InputSocket.Visibility = Visibility.Collapsed;
+            }
         }
 
 

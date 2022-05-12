@@ -10,7 +10,6 @@
 
     <StackPanel x:Name="stackPanel" Background="Gray" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Label x:Name="lbl_InspectorName" 
-               Content="EWT" 
                HorizontalAlignment="Stretch" 
                HorizontalContentAlignment="Center" 
                Background="DarkGreen"
@@ -20,8 +19,8 @@
                MouseLeftButtonDown="lbl_InspectorName_MouseLeftButtonDown"
                MouseLeftButtonUp="lbl_InspectorName_MouseLeftButtonUp"
                ></Label>
-        
-        <Border Padding="10 5 10 5">
+
+        <Border Padding="0 5 0 5">
             <StackPanel Orientation="Vertical" x:Name="sp_PropsPanel"/>
         </Border>
     </StackPanel>
